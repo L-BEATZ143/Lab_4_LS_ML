@@ -16,7 +16,7 @@ int main() {
     std::cin >> itemCode;
     std::cout << "enter price: " << std::endl;
     std::cin >> unitPrice;
-    std::cout << "are you a member? (y/n): " << stl::endl;
+    std::cout << "are you a member? (y/n): " << std::endl;
     std::cin >> memberAnswer;
 
 
