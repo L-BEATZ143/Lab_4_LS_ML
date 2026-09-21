@@ -8,15 +8,19 @@ int main() {
     double unitPrice;
     char memberAnswer; // 'y' or 'n'
     
-    std::cout << "Enter food name: " << std::endl;
-    getline(std::cin, foodName);
-    std::cout << "Enter quantity: " << std::endl;
-    std::cin >> itemQuantity;
-    std::cout << "enter item code " << std::endl;
+    std::cout << "Enter food name: ";
+    std::getline(std::cin, foodName);
+
+    std::cout << "Enter item code: ";
     std::cin >> itemCode;
-    std::cout << "enter price: " << std::endl;
+
+    std::cout << "Enter quantity: ";
+    std::cin >> itemQuantity;
+
+    std::cout << "Enter unit price: ";
     std::cin >> unitPrice;
-    std::cout << "are you a member? (y/n): " << std::endl;
+
+    std::cout << "Are you a member? (y/n): ";
     std::cin >> memberAnswer;
 
 //typofix
