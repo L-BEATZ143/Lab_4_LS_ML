@@ -2,6 +2,9 @@
 #include <string>
 #include <iomanip>
 int main() {
-    int itemQuantity = 
-
+    std::string foodName;
+    char itemCode;
+    int itemQuantity;
+    double unitPrice;
+    char memberAnswer; // 'y' or 'n'
 }
