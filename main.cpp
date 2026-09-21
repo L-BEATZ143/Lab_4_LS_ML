@@ -19,6 +19,6 @@ int main() {
     std::cout << "are you a member? (y/n): " << std::endl;
     std::cin >> memberAnswer;
 
-
+//typofix
 
 }
