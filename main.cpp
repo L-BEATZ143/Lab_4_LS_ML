@@ -7,6 +7,18 @@ int main() {
     int itemQuantity;
     double unitPrice;
     char memberAnswer; // 'y' or 'n'
-
     
+    std::cout << "Enter food name: " << std::endl;
+    getline(std::cin, foodName);
+    std::cout << "Enter quantity: " << std::endl;
+    std::cin >> itemQuantity;
+    std::cout << "enter item code " << std::endl;
+    std::cout >> itemCode;
+    std::cout << "enter price: " << std::endl;
+    std::cin >> unitPrice;
+    std::cout << "are you a member? (y/n): " << stl::endl;
+    std::cin >> memberAnswer;
+
+
+
 }
