@@ -13,7 +13,7 @@ int main() {
     std::cout << "Enter quantity: " << std::endl;
     std::cin >> itemQuantity;
     std::cout << "enter item code " << std::endl;
-    std::cout >> itemCode;
+    std::cin >> itemCode;
     std::cout << "enter price: " << std::endl;
     std::cin >> unitPrice;
     std::cout << "are you a member? (y/n): " << stl::endl;
