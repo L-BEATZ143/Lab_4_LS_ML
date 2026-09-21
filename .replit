@@ -1,0 +1,24 @@
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "C++ App"
+
+[[workflows.workflow]]
+name = "C++ App"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = """
+g++ -std=c++17 -Wall -Wextra -Wpedantic main.cpp -o app && printf 'Developer
+' | ./app"""
