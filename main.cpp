@@ -4,6 +4,7 @@
 
 int main() {
     std::string foodName;
+    std::string cashierNotes;
     char itemCode;
     int itemQuantity;
     double unitPrice;
@@ -24,4 +25,15 @@ int main() {
     std::cout << std::setw(10) << std::left << "Are you a member?: " << std::endl;
     std::cin >> memberCheck;
 
+    std::cin.ignore();
+    std::cout << std::setw(10) << std::left << "Enter cashier notes: " << std::endl;
+    std::getline(std::cin, cashierNotes);
+
+
+    if (memberCheck = true) { 
+        auto totalCost = itemQuantity * unitPrice * 0.9;
+    }
+    else {
+        auto totalCost = itemQuantity * unitPrice * 0.9;
+    }
 }
