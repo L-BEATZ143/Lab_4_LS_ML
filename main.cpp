@@ -23,6 +23,6 @@ int main() {
     std::cout << "Are you a member? (y/n): ";
     std::cin >> memberAnswer;
 
-//typofix
+//pushinput
 
 }
