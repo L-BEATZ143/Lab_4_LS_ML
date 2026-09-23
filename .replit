@@ -14,14 +14,12 @@ args = "C++ App"
 name = "C++ App"
 author = "agent"
 
-[workflows.workflow.metadata]
-outputType = "console"
-
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = """
-g++ -std=c++17 -Wall -Wextra -Wpedantic main.cpp -o app && printf 'Developer
-' | ./app"""
+args = "g++ -std=c++17 -Wall -Wextra -Wpedantic main.cpp -o app && ./app"
+
+[workflows.workflow.metadata]
+outputType = "console"
 
 [nix]
 channel = "stable-25_05"

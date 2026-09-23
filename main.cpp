@@ -9,7 +9,7 @@ int main() {
     double unitPrice;
     bool memberCheck;
 
-    std::cout << std::setw(10) << std::left << "Enter food name: ";
+    std::cout << std::setw(10) << std::left << "Enter food name: " << std::endl;
     std::getline(std::cin, foodName);
 
     std::cout << std::setw(10) << std::left << "Enter item code: " << std::endl;
