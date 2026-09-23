@@ -22,3 +22,6 @@ task = "shell.exec"
 args = """
 g++ -std=c++17 -Wall -Wextra -Wpedantic main.cpp -o app && printf 'Developer
 ' | ./app"""
+
+[nix]
+channel = "stable-25_05"
