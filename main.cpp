@@ -6,7 +6,7 @@ int main() {
     char itemCode;
     int itemQuantity;
     double unitPrice;
-    char memberAnswer; // 'y' or 'n'
+    bool memberCheck;
     
     std::cout << "Enter food name: ";
     std::getline(std::cin, foodName);
@@ -20,8 +20,8 @@ int main() {
     std::cout << "Enter unit price: ";
     std::cin >> unitPrice;
 
-    std::cout << "Are you a member? (y/n): ";
-    std::cin >> memberAnswer;
+    std::cout << "Are you a member?: ";
+    std::cin >> memberCheck;
 
 //pushinput again
 
