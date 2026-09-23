@@ -17,8 +17,8 @@ int main() {
     std::cout << std::setw(10) << std::left << "Enter quantity: ";
     std::cin >> std::setw(10) >> std::left >> itemQuantity;
 
-    std::cout << std::setw(10) << std::left << std::setprecision(2) << "Enter unit price: ";
-    std::cin >> std::setw(10) >> std::left >> unitPrice;
+    std::cout << std::setw(10) << std::left << "Enter unit price: ";
+    std::cin >> std::setw(10) >> std::left >> std::setprecision(2) >> std::fixed >> unitPrice;
 
     std::cout << std::setw(10) << std::left << "Are you a member?: ";
     std::cin >> std::setw(10) >> std::left >> memberCheck;
