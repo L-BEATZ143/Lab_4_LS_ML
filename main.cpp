@@ -13,9 +13,6 @@ int main() {
     std::cout << std::setw(10) << std::left << "Enter quantity: " << std::endl;
     std::cin >> itemQuantity;
 
-    std::cout << std::setw(10) << std::left << "Enter unit price: " << std::endl;
-    std::cin >> unitPrice;
-
     std::cout << std::setw(10) << std::left << "Are you a member? (y/n): " << std::endl;
     std::cin >> memberCheck;
 
