@@ -16,22 +16,22 @@ int main() {
         << setw(15) << "Medium (M)"
         << setw(15) << "Large (L)" << endl;
 
-    cout << setw(15) << left << "Slushie"
+    cout << setw(15) << left << "A. Slushie"
         << setw(15) << "3.50"
         << setw(15) << "4.50"
         << setw(15) << "5.50" << endl;
 
-    cout << setw(15) << left << "Vinyl Combo"
+    cout << setw(15) << left << "B. Vinyl Combo"
         << setw(15) << "20.29"
         << setw(15) << "20.79"
         << setw(15) << "21.29" << endl;
 
-    cout << setw(15) << left << "Vinyl Combo"
+    cout << setw(15) << left << "C. Vinyl Combo"
         << setw(15) << "20.29"
         << setw(15) << "20.79"
         << setw(15) << "21.29" << endl;
 
-    cout << setw(15) << left << "Churro"
+    cout << setw(15) << left << "D. Churro"
         << setw(15) << "1.99"
         << setw(15) << "2.99"
         << setw(15) << "3.99" << endl;
