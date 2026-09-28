@@ -10,12 +10,6 @@ int main() {
     double unitPrice;
     char memberCheck;
 
-    std::cout << std::setw(10) << std::left << "Enter food name: " << std::endl;
-    std::getline(std::cin, foodName);
-
-    std::cout << std::setw(10) << std::left << "Enter item code: " << std::endl;
-    std::cin >> itemCode;
-
     std::cout << std::setw(10) << std::left << "Enter quantity: " << std::endl;
     std::cin >> itemQuantity;
 
