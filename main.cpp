@@ -100,16 +100,20 @@ int main() {
 
     double totalCost = itemQuantity * unitPrice;
 
-     if (memberCheck == 'y' || memberCheck == 'Y') {
+     if (memberCheck == 'y' || memberCheck == 'Y')
+     {
         totalCost = totalCost * 0.90;
-    }
+    
+     }
      cout << "\n----- RECEIPT -----\n";
-     cout << left << setw(15) << "item"
+     cout << left << setw(15) << "Item"
          << setw(10) << "Code"
+         << setw(10) << "Size"
          << setw(10) << "Qty"
          << setw(10) << "Price" << endl;
      cout << left << setw(15) << foodName
          << setw(10) << itemCode
+         << setw(10) << size
          << setw(10) << itemQuantity
          << fixed << setprecision(2) << unitPrice << endl;
 
@@ -120,11 +124,13 @@ int main() {
      cout << left
          << setw(15) << "Item"
          << setw(10) << "Code"
+         << setw(10) << "Size"
          << right << setw(10) << "Qty" << endl;
 
      cout << left
          << setw(15) << foodName
          << setw(10) << itemCode
+         << setw(10) << size
          << right << setw(10) << itemQuantity << endl;
 
     
