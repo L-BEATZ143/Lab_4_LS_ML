@@ -10,7 +10,7 @@ int main() {
     int itemQuantity;
     double unitPrice;
     char memberCheck;
-    
+    char size;
     cout << setw(15) << left << "Items"
         << setw(15) << "Small (S)"
         << setw(15) << "Medium (M)"
@@ -21,21 +21,73 @@ int main() {
         << setw(15) << "4.50"
         << setw(15) << "5.50" << endl;
 
-    cout << setw(15) << left << "B. Vinyl Combo"
-        << setw(15) << "20.29"
-        << setw(15) << "20.79"
-        << setw(15) << "21.29" << endl;
+    cout << setw(15) << left << "B. Burger"
+        << setw(15) << "2.99"
+        << setw(15) << "4.99"
+        << setw(15) << "6.99" << endl;
 
     cout << setw(15) << left << "C. Vinyl Combo"
-        << setw(15) << "20.29"
-        << setw(15) << "20.79"
-        << setw(15) << "21.29" << endl;
+        << setw(15) << "19.99"
+        << setw(15) << "20.99"
+        << setw(15) << "21.99" << endl;
 
     cout << setw(15) << left << "D. Churro"
         << setw(15) << "1.99"
         << setw(15) << "2.99"
         << setw(15) << "3.99" << endl;
 
+    cout << "enter item code" << endl;
+    cin >> itemCode;
+    cout << "enter size" << endl;
+    cin >> size;
+    if (itemCode == 'a' || itemCode == 'A'){
+        if (size == 's' || size == 'S'){
+            unitPrice = 3.50;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 4.50;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 5.50;
+        }
+    
+    }
+    else if (itemCode == 'b' || itemCode == 'B'){
+        if (size == 's' || size == 'S'){
+            unitPrice = 2.99;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 4.99;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 6.99;
+        }
+
+    }
+    else if (itemCode == 'c' || itemCode == 'C'){
+        if (size == 's' || size == 'S'){
+            unitPrice = 19.99;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 20.99;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 21.99;
+        }
+
+    }
+    else if (itemCode == 'd' || itemCode == 'D'){
+        if (size == 's' || size == 'S'){
+            unitPrice = 1.99;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 2.99;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 3.99;
+        }
+
+    }
     cout << setw(10) << left << "Enter quantity: " << endl;
     cin >> itemQuantity;
 
@@ -68,10 +120,12 @@ int main() {
      cout << left
          << setw(15) << "Item"
          << setw(10) << "Code"
-         << right << setw(10) << "Quantity" << endl;
+         << right << setw(10) << "Qty" << endl;
 
      cout << left
          << setw(15) << foodName
          << setw(10) << itemCode
          << right << setw(10) << itemQuantity << endl;
+
+    
 }
