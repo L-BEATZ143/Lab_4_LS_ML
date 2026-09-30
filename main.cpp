@@ -38,9 +38,10 @@ int main() {
 
     cout << "enter item code" << endl;
     cin >> itemCode;
-    cout << "enter size" << endl;
+    cout << "enter size (s/m/l)" << endl;
     cin >> size;
     if (itemCode == 'a' || itemCode == 'A'){
+        foodName = "Slushie";
         if (size == 's' || size == 'S'){
             unitPrice = 3.50;
         }
@@ -53,6 +54,7 @@ int main() {
     
     }
     else if (itemCode == 'b' || itemCode == 'B'){
+        foodName = "Burger";
         if (size == 's' || size == 'S'){
             unitPrice = 2.99;
         }
@@ -65,6 +67,7 @@ int main() {
 
     }
     else if (itemCode == 'c' || itemCode == 'C'){
+        foodName = "Vinyl Combo";
         if (size == 's' || size == 'S'){
             unitPrice = 19.99;
         }
@@ -77,6 +80,7 @@ int main() {
 
     }
     else if (itemCode == 'd' || itemCode == 'D'){
+        foodName = "Churro";
         if (size == 's' || size == 'S'){
             unitPrice = 1.99;
         }
