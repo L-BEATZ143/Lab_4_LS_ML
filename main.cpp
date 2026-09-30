@@ -3,58 +3,139 @@
 #include <iomanip>
 
 int main() {
-    std::string foodName;
-    std::string cashierNotes;
+    using namespace std;
+    string foodName;
+    string cashierNotes;
     char itemCode;
     int itemQuantity;
     double unitPrice;
     char memberCheck;
+    char size;
+    cout << setw(15) << left << "Items"
+        << setw(15) << "Small (S)"
+        << setw(15) << "Medium (M)"
+        << setw(15) << "Large (L)" << endl;
 
-    std::cout << std::setw(10) << std::left << "Enter food name: " << std::endl;
-    std::getline(std::cin, foodName);
+    cout << setw(15) << left << "A. Slushie"
+        << setw(15) << "3.50"
+        << setw(15) << "4.50"
+        << setw(15) << "5.50" << endl;
 
-    std::cout << std::setw(10) << std::left << "Enter item code: " << std::endl;
-    std::cin >> itemCode;
+    cout << setw(15) << left << "B. Burger"
+        << setw(15) << "2.99"
+        << setw(15) << "4.99"
+        << setw(15) << "6.99" << endl;
 
-    std::cout << std::setw(10) << std::left << "Enter quantity: " << std::endl;
-    std::cin >> itemQuantity;
+    cout << setw(15) << left << "C. Vinyl Combo"
+        << setw(15) << "19.99"
+        << setw(15) << "20.99"
+        << setw(15) << "21.99" << endl;
 
-    std::cout << std::setw(10) << std::left << "Enter unit price: " << std::endl;
-    std::cin >> unitPrice;
+    cout << setw(15) << left << "D. Churro"
+        << setw(15) << "1.99"
+        << setw(15) << "2.99"
+        << setw(15) << "3.99" << endl;
 
-    std::cout << std::setw(10) << std::left << "Are you a member? (y/n): " << std::endl;
-    std::cin >> memberCheck;
+    cout << "enter item code" << endl;
+    cin >> itemCode;
+    cout << "enter size (s/m/l)" << endl;
+    cin >> size;
+    if (itemCode == 'a' || itemCode == 'A'){
+        foodName = "Slushie";
+        if (size == 's' || size == 'S'){
+            unitPrice = 3.50;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 4.50;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 5.50;
+        }
+    
+    }
+    else if (itemCode == 'b' || itemCode == 'B'){
+        foodName = "Burger";
+        if (size == 's' || size == 'S'){
+            unitPrice = 2.99;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 4.99;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 6.99;
+        }
 
-    std::cin.ignore();
-    std::cout << std::setw(10) << std::left << "Enter cashier notes: " << std::endl;
-    std::getline(std::cin, cashierNotes);
+    }
+    else if (itemCode == 'c' || itemCode == 'C'){
+        foodName = "Vinyl Combo";
+        if (size == 's' || size == 'S'){
+            unitPrice = 19.99;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 20.99;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 21.99;
+        }
+
+    }
+    else if (itemCode == 'd' || itemCode == 'D'){
+        foodName = "Churro";
+        if (size == 's' || size == 'S'){
+            unitPrice = 1.99;
+        }
+        else if (size == 'm' || size == 'M'){
+            unitPrice = 2.99;
+        }
+        else if (size == 'l' || size == 'L'){
+            unitPrice = 3.99;
+        }
+
+    }
+    cout << setw(10) << left << "Enter quantity: " << endl;
+    cin >> itemQuantity;
+
+    cout << setw(10) << left << "Are you a member? (y/n): " << endl;
+    cin >> memberCheck;
+
+    cin.ignore();
+    cout << setw(10) << left << "Enter cashier notes: " << endl;
+    getline(cin, cashierNotes);
 
     double totalCost = itemQuantity * unitPrice;
 
-     if (memberCheck == 'y' || memberCheck == 'Y') {
+     if (memberCheck == 'y' || memberCheck == 'Y')
+     {
         totalCost = totalCost * 0.90;
-    }
-     std::cout << "\n----- RECEIPT -----\n";
-     std::cout << std::left << std::setw(15) << "item"
-         << std::setw(10) << "Code"
-         << std::setw(10) << "Qty"
-         << std::setw(10) << "Price" << std::endl;
-     std::cout << std::left << std::setw(15) << foodName
-         << std::setw(10) << itemCode
-         << std::setw(10) << itemQuantity
-         << std::fixed << std::setprecision(2) << unitPrice << std::endl;
+    
+     }
+     cout << "\n----- RECEIPT -----\n";
+     cout << left << setw(15) << "Item"
+         << setw(10) << "Code"
+         << setw(10) << "Size"
+         << setw(10) << "Qty"
+         << setw(10) << "Price" << endl;
+     cout << left << setw(15) << foodName
+         << setw(10) << itemCode
+         << setw(10) << size
+         << setw(10) << itemQuantity
+         << fixed << setprecision(2) << unitPrice << endl;
 
-     std::cout << "Total: $" << std::fixed << std::setprecision(2) << totalCost << std::endl;
+     cout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
 
-     std::cout << "\n----- INVENTORY AUDIT -----\n";
+     cout << "\n----- INVENTORY AUDIT -----\n";
 
-     std::cout << std::left
-         << std::setw(15) << "Item"
-         << std::setw(10) << "Code"
-         << std::right << std::setw(10) << "Quantity" << std::endl;
+     cout << left
+         << setw(15) << "Item"
+         << setw(10) << "Code"
+         << setw(10) << "Size"
+         << right << setw(10) << "Qty" << endl;
 
-     std::cout << std::left
-         << std::setw(15) << foodName
-         << std::setw(10) << itemCode
-         << std::right << std::setw(10) << itemQuantity << std::endl;
+     cout << left
+         << setw(15) << foodName
+         << setw(10) << itemCode
+         << setw(10) << size
+         << right << setw(10) << itemQuantity << endl;
+
+    
 }
