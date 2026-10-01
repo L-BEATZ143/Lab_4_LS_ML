@@ -11,6 +11,10 @@ int main() {
     double unitPrice;
     char memberCheck;
     char size;
+    double stateTax;
+    double countyTax;
+    double municipalTax;
+    
     cout << setw(15) << left << "Items"
         << setw(15) << "Small (S)"
         << setw(15) << "Medium (M)"
@@ -137,5 +141,24 @@ int main() {
          << setw(10) << size
          << right << setw(10) << itemQuantity << endl;
 
-    
+     stateTax = totalCost * 0.065;
+     countyTax = totalCost * 0.005;
+     municipalTax = totalCost * 0.02125;
+     
+     cout << "\n----- TAXES -----\n";
+
+     cout << left
+         << setw(25) << "Tax"
+         << setw(15) << "Percentage"
+         << setw(10) << "Cost" << endl
+         << setw(25) << "Arkansas State Tax:"
+         << setw(15) << "6.5%"
+         << setw(10) << setprecision(2) << stateTax << endl
+         << setw(25) << "Faulkner County Tax:"
+         << setw(15) << "0.5%"
+         << setw(10) << setprecision(2) << countyTax << endl
+         << setw(25) << "Conway Municipal Tax:"
+         << setw(15) << "0.02125%"
+         << setw(10) << setprecision(2) << municipalTax << endl;
+    // remember to add the total at the end, perhaps with something like totalCost = (totalCost + stateTax + countyTax + municipalTax + tip)
 }
