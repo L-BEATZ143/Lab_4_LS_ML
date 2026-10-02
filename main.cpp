@@ -14,7 +14,9 @@ int main() {
     double stateTax;
     double countyTax;
     double municipalTax;
-    
+    char tips;
+    double tipNum;
+    string tipPercent;
     cout << setw(15) << left << "Items"
         << setw(15) << "Small (S)"
         << setw(15) << "Medium (M)"
@@ -105,7 +107,36 @@ int main() {
     cin.ignore();
     cout << setw(10) << left << "Enter cashier notes: " << endl;
     getline(cin, cashierNotes);
+    cout << "How much do you want to tip" << endl;
+    cout << "A. 15% = $1.50" << endl;
+    cout << "B. 20% = $2.00" << endl;
+    cout << "C. 25% = $2.50" << endl;
+    cout << "D. Other E. No Tip" << endl;
+    cin >> tips;
+    if (tips == 'a' || tips == 'A'){
+        tipNum = 1.00;
+        tipPercent = "15%";
+    }
 
+    else if (tips == 'b' || tips == 'B'){
+        tipNum = 2.00;
+        tipPercent = "20%";
+    }
+
+    else if (tips == 'c' || tips == 'C'){
+        tipNum = 2.50;
+        tipPercent = "25%";
+    }
+
+    else if (tips == 'd' || tips == 'D'){
+        cout << "how much would you actually want to tip:" << endl;
+        cin >> tipNum;
+        tipPercent = "Custom tip";
+    }
+    else if (tips == 'e' || tips == 'E'){
+        tipNum = 0;
+        tipPercent = "N/A";
+    }
     double totalCost = itemQuantity * unitPrice;
 
      if (memberCheck == 'y' || memberCheck == 'Y')
@@ -144,7 +175,7 @@ int main() {
      stateTax = totalCost * 0.065;
      countyTax = totalCost * 0.005;
      municipalTax = totalCost * 0.02125;
-     
+     totalCost = (totalCost + stateTax + countyTax + municipalTax + tipNum);
      cout << "\n----- TAXES -----\n";
 
      cout << left
@@ -159,6 +190,9 @@ int main() {
          << setw(10) << setprecision(2) << countyTax << endl
          << setw(25) << "Conway Municipal Tax:"
          << setw(15) << "0.02125%"
-         << setw(10) << setprecision(2) << municipalTax << endl;
-    // remember to add the total at the end, perhaps with something like totalCost = (totalCost + stateTax + countyTax + municipalTax + tip)
+         << setw(10) << setprecision(2) << municipalTax << endl
+         << setw(25) << "TIP"
+         << setw(15) << tipPercent
+         << setw(10) << setprecision(2) << totalCost << endl;
+cout << "total: " << totalCost;
 }
