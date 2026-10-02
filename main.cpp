@@ -15,7 +15,7 @@ int main() {
     double countyTax;
     double municipalTax;
     char tips;
-    double tipNum;
+    double tipCost;
     string tipPercent;
     cout << setw(15) << left << "Items"
         << setw(15) << "Small (S)"
@@ -46,6 +46,7 @@ int main() {
     cin >> itemCode;
     cout << "enter size (s/m/l)" << endl;
     cin >> size;
+
     if (itemCode == 'a' || itemCode == 'A'){
         foodName = "Slushie";
         if (size == 's' || size == 'S'){
@@ -104,46 +105,39 @@ int main() {
     cout << setw(10) << left << "Are you a member? (y/n): " << endl;
     cin >> memberCheck;
 
+    double totalCost = itemQuantity * unitPrice;
+    
+    if (memberCheck == 'y' || memberCheck == 'Y')
+    {
+        totalCost = totalCost * 0.90;
+
+    }
+
     cin.ignore();
     cout << setw(10) << left << "Enter cashier notes: " << endl;
     getline(cin, cashierNotes);
     cout << "How much do you want to tip" << endl;
-    cout << "A. 15% = $1.50" << endl;
-    cout << "B. 20% = $2.00" << endl;
-    cout << "C. 25% = $2.50" << endl;
-    cout << "D. Other E. No Tip" << endl;
+    cout << "A. 15% = $" << fixed << setprecision(2) << totalCost * 0.15 << endl;
+    cout << "B. 20% = $" << fixed << setprecision(2) << totalCost * 0.20 << endl;
+    cout << "C. 25% = $" << fixed << setprecision(2) << totalCost * 0.25 << endl;
+    cout << "D. Other" << endl;
     cin >> tips;
     if (tips == 'a' || tips == 'A'){
-        tipNum = 1.00;
-        tipPercent = "15%";
+        tipCost = totalCost * 0.15;
     }
 
     else if (tips == 'b' || tips == 'B'){
-        tipNum = 2.00;
-        tipPercent = "20%";
+        tipCost = totalCost * 0.15;
     }
 
     else if (tips == 'c' || tips == 'C'){
-        tipNum = 2.50;
-        tipPercent = "25%";
+        tipCost = totalCost * 0.15;
     }
 
     else if (tips == 'd' || tips == 'D'){
-        cout << "how much would you actually want to tip:" << endl;
-        cin >> tipNum;
-        tipPercent = "Custom tip";
+        cout << "Please enter how much you'd like to tip:" << endl;
+        cin >> tipCost;
     }
-    else if (tips == 'e' || tips == 'E'){
-        tipNum = 0;
-        tipPercent = "N/A";
-    }
-    double totalCost = itemQuantity * unitPrice;
-
-     if (memberCheck == 'y' || memberCheck == 'Y')
-     {
-        totalCost = totalCost * 0.90;
-    
-     }
      cout << "\n----- RECEIPT -----\n";
      cout << left << setw(15) << "Item"
          << setw(10) << "Code"
@@ -175,7 +169,7 @@ int main() {
      stateTax = totalCost * 0.065;
      countyTax = totalCost * 0.005;
      municipalTax = totalCost * 0.02125;
-     totalCost = (totalCost + stateTax + countyTax + municipalTax + tipNum);
+     totalCost = (totalCost + stateTax + countyTax + municipalTax + tipCost);
      cout << "\n----- TAXES -----\n";
 
      cout << left
@@ -184,15 +178,13 @@ int main() {
          << setw(10) << "Cost" << endl
          << setw(25) << "Arkansas State Tax:"
          << setw(15) << "6.5%"
-         << setw(10) << setprecision(2) << stateTax << endl
+         << setw(10) << fixed << setprecision(2) << stateTax << endl
          << setw(25) << "Faulkner County Tax:"
          << setw(15) << "0.5%"
-         << setw(10) << setprecision(2) << countyTax << endl
+         << setw(10) << fixed << setprecision(2) << countyTax << endl
          << setw(25) << "Conway Municipal Tax:"
          << setw(15) << "0.02125%"
-         << setw(10) << setprecision(2) << municipalTax << endl
-         << setw(25) << "TIP"
-         << setw(15) << tipPercent
-         << setw(10) << setprecision(2) << totalCost << endl;
-cout << "total: " << totalCost;
+         << setw(10) << fixed << setprecision(2) << municipalTax << endl;
+
+       cout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost;
 }
