@@ -47,7 +47,7 @@ int main() {
     cout << "enter size (s/m/l)" << endl;
     cin >> size;
 
-/*    if (itemCode == 'a' || itemCode == 'A'){
+    if (itemCode == 'a' || itemCode == 'A'){
         foodName = "Slushie";
         if (size == 's' || size == 'S'){
             unitPrice = 3.50;
@@ -99,7 +99,7 @@ int main() {
         }
 
     }
-*/
+
     cout << setw(10) << left << "Enter quantity: " << endl;
     cin >> itemQuantity;
 
