@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-
+#include <cctype>
 int main() {
     using namespace std;
     string foodName;
@@ -17,6 +17,7 @@ int main() {
     char tips;
     double tipCost;
     string tipPercent;
+    string customerName;
     cout << setw(15) << left << "Items"
         << setw(15) << "Small (S)"
         << setw(15) << "Medium (M)"
@@ -41,13 +42,20 @@ int main() {
         << setw(15) << "1.99"
         << setw(15) << "2.99"
         << setw(15) << "3.99" << endl;
-
+    cout << "E. Checkout" << endl;
+    do{
+        
+    
     cout << "enter item code" << endl;
     cin >> itemCode;
+    if (itemCode != 'e' && itemCode != 'E'){
     cout << "enter size (s/m/l)" << endl;
     cin >> size;
-
-    if (itemCode == 'a' || itemCode == 'A'){
+    }
+    if (itemCode == 'e' || itemCode == 'E'){
+        break;
+    }
+    else if (itemCode == 'a' || itemCode == 'A'){
         foodName = "Slushie";
         if (size == 's' || size == 'S'){
             unitPrice = 3.50;
@@ -97,12 +105,15 @@ int main() {
         else if (size == 'l' || size == 'L'){
             unitPrice = 3.99;
         }
-
+        
+    }
+    else if (itemCode == 'e' || itemCode == 'E'){
+        break;
     }
 
     cout << setw(10) << left << "Enter quantity: " << endl;
     cin >> itemQuantity;
-
+    } while (toupper(itemCode) != 'E' && (toupper(itemCode) == 'A' || toupper(itemCode) == 'B' || toupper(itemCode) == 'C' || toupper(itemCode) == 'D'));
     cout << setw(10) << left << "Are you a member? (y/n): " << endl;
     cin >> memberCheck;
 
@@ -122,6 +133,7 @@ int main() {
     cout << "B. 20% = $" << fixed << setprecision(2) << totalCost * 0.20 << endl;
     cout << "C. 25% = $" << fixed << setprecision(2) << totalCost * 0.25 << endl;
     cout << "D. Other" << endl;
+    cout << "E. No Tip" << endl;
     cin >> tips;
     if (tips == 'a' || tips == 'A'){
         tipCost = totalCost * 0.15;
@@ -139,7 +151,13 @@ int main() {
         cout << "Please enter how much you'd like to tip:" << endl;
         cin >> tipCost;
     }
+    else if (tips == 'e' || tips == 'E'){
+        tipCost = 0.00;
+    }
+    cout << "please enter customer's name:" << endl;
+    cin >> customerName;
      cout << "\n----- RECEIPT -----\n";
+     cout << "Customer Name: " << customerName << endl;
      cout << left << setw(15) << "Item"
          << setw(10) << "Code"
          << setw(10) << "Size"
