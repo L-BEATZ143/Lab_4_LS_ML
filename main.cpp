@@ -2,6 +2,8 @@
 #include <string>
 #include <iomanip>
 #include <cctype>
+#include <sstream>
+
 int main() {
     using namespace std;
     string foodName;
@@ -18,6 +20,10 @@ int main() {
     double tipCost;
     string tipPercent;
     string customerName;
+    ostringstream reciept;
+    ostringstream audit;
+    double totalCost = 0;
+
     cout << setw(15) << left << "Items"
         << setw(15) << "Small (S)"
         << setw(15) << "Medium (M)"
@@ -113,11 +119,27 @@ int main() {
 
     cout << setw(10) << left << "Enter quantity: " << endl;
     cin >> itemQuantity;
+
+    double subtotal = itemQuantity * unitPrice;
+
+    reciept // this is the accumulator for the reciept items
+        << left << setw(15) << foodName
+        << setw(10) << itemCode
+        << setw(10) << size
+        << setw(10) << itemQuantity
+        << fixed << setprecision(2) << subtotal << endl;
+
+    audit // this is the accumulator for the audit items
+        << left << setw(15) << foodName
+        << setw(10) << itemCode
+        << setw(10) << size
+        << right << setw(10) << itemQuantity << endl;
+
+    totalCost += subtotal;
+
     } while (toupper(itemCode) != 'E' && (toupper(itemCode) == 'A' || toupper(itemCode) == 'B' || toupper(itemCode) == 'C' || toupper(itemCode) == 'D'));
     cout << setw(10) << left << "Are you a member? (y/n): " << endl;
     cin >> memberCheck;
-
-    double totalCost = itemQuantity * unitPrice;
     
     if (memberCheck == 'y' || memberCheck == 'Y')
     {
@@ -162,12 +184,9 @@ int main() {
          << setw(10) << "Code"
          << setw(10) << "Size"
          << setw(10) << "Qty"
-         << setw(10) << "Price" << endl;
-     cout << left << setw(15) << foodName
-         << setw(10) << itemCode
-         << setw(10) << size
-         << setw(10) << itemQuantity
-         << fixed << setprecision(2) << unitPrice << endl;
+         << setw(10) << "Subtotal" << endl;
+
+     cout << reciept.str(); // this makes the reciept items appear
 
      cout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
 
@@ -179,11 +198,7 @@ int main() {
          << setw(10) << "Size"
          << right << setw(10) << "Qty" << endl;
 
-     cout << left
-         << setw(15) << foodName
-         << setw(10) << itemCode
-         << setw(10) << size
-         << right << setw(10) << itemQuantity << endl;
+     cout << audit.str(); // this makes the inventory audit items appear
 
      stateTax = totalCost * 0.065;
      countyTax = totalCost * 0.005;
