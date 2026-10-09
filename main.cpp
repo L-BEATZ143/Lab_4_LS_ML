@@ -23,202 +23,225 @@ int main() {
     ostringstream reciept;
     ostringstream audit;
     double totalCost = 0;
+    int loyalty;
+    double grandTotal = 0;
+    int totalCustomers = 0;
+    bool anotherCustomer;
+    char cashierResponse;
+    anotherCustomer = true;
 
-    cout << setw(15) << left << "Items"
-        << setw(15) << "Small (S)"
-        << setw(15) << "Medium (M)"
-        << setw(15) << "Large (L)" << endl;
+    while (anotherCustomer) {
+        loyalty = 0;
+        cout << setw(15) << left << "Items"
+            << setw(15) << "Small (S)"
+            << setw(15) << "Medium (M)"
+            << setw(15) << "Large (L)" << endl;
 
-    cout << setw(15) << left << "A. Slushie"
-        << setw(15) << "3.50"
-        << setw(15) << "4.50"
-        << setw(15) << "5.50" << endl;
+        cout << setw(15) << left << "A. Slushie"
+            << setw(15) << "3.50"
+            << setw(15) << "4.50"
+            << setw(15) << "5.50" << endl;
 
-    cout << setw(15) << left << "B. Burger"
-        << setw(15) << "2.99"
-        << setw(15) << "4.99"
-        << setw(15) << "6.99" << endl;
+        cout << setw(15) << left << "B. Burger"
+            << setw(15) << "2.99"
+            << setw(15) << "4.99"
+            << setw(15) << "6.99" << endl;
 
-    cout << setw(15) << left << "C. Vinyl Combo"
-        << setw(15) << "19.99"
-        << setw(15) << "20.99"
-        << setw(15) << "21.99" << endl;
+        cout << setw(15) << left << "C. Vinyl Combo"
+            << setw(15) << "19.99"
+            << setw(15) << "20.99"
+            << setw(15) << "21.99" << endl;
 
-    cout << setw(15) << left << "D. Churro"
-        << setw(15) << "1.99"
-        << setw(15) << "2.99"
-        << setw(15) << "3.99" << endl;
-    cout << "E. Checkout" << endl;
-    do{
-        
-    
-    cout << "enter item code" << endl;
-    cin >> itemCode;
-    if (itemCode != 'e' && itemCode != 'E'){
-    cout << "enter size (s/m/l)" << endl;
-    cin >> size;
-    }
-    if (itemCode == 'e' || itemCode == 'E'){
-        break;
-    }
-    else if (itemCode == 'a' || itemCode == 'A'){
-        foodName = "Slushie";
-        if (size == 's' || size == 'S'){
-            unitPrice = 3.50;
+        cout << setw(15) << left << "D. Churro"
+            << setw(15) << "1.99"
+            << setw(15) << "2.99"
+            << setw(15) << "3.99" << endl;
+        cout << "E. Checkout" << endl;
+        do {
+
+
+            cout << "enter item code" << endl;
+            cin >> itemCode;
+            if (itemCode != 'e' && itemCode != 'E') {
+                cout << "enter size (s/m/l)" << endl;
+                cin >> size;
+            }
+            if (itemCode == 'e' || itemCode == 'E') {
+                break;
+            }
+            else if (itemCode == 'a' || itemCode == 'A') {
+                foodName = "Slushie";
+                if (size == 's' || size == 'S') {
+                    unitPrice = 3.50;
+                }
+                else if (size == 'm' || size == 'M') {
+                    unitPrice = 4.50;
+                }
+                else if (size == 'l' || size == 'L') {
+                    unitPrice = 5.50;
+                }
+
+            }
+            else if (itemCode == 'b' || itemCode == 'B') {
+                foodName = "Burger";
+                if (size == 's' || size == 'S') {
+                    unitPrice = 2.99;
+                }
+                else if (size == 'm' || size == 'M') {
+                    unitPrice = 4.99;
+                }
+                else if (size == 'l' || size == 'L') {
+                    unitPrice = 6.99;
+                }
+
+            }
+            else if (itemCode == 'c' || itemCode == 'C') {
+                foodName = "Vinyl Combo";
+                if (size == 's' || size == 'S') {
+                    unitPrice = 19.99;
+                }
+                else if (size == 'm' || size == 'M') {
+                    unitPrice = 20.99;
+                }
+                else if (size == 'l' || size == 'L') {
+                    unitPrice = 21.99;
+                }
+
+            }
+            else if (itemCode == 'd' || itemCode == 'D') {
+                foodName = "Churro";
+                if (size == 's' || size == 'S') {
+                    unitPrice = 1.99;
+                }
+                else if (size == 'm' || size == 'M') {
+                    unitPrice = 2.99;
+                }
+                else if (size == 'l' || size == 'L') {
+                    unitPrice = 3.99;
+                }
+
+            }
+            else if (itemCode == 'e' || itemCode == 'E') {
+                break;
+            }
+
+            cout << setw(10) << left << "Enter quantity: " << endl;
+            cin >> itemQuantity;
+
+            double subtotal = itemQuantity * unitPrice;
+
+            reciept // this is the accumulator for the reciept items
+                << left << setw(15) << foodName
+                << setw(10) << itemCode
+                << setw(10) << size
+                << setw(10) << itemQuantity
+                << fixed << setprecision(2) << subtotal << endl;
+
+            audit // this is the accumulator for the audit items
+                << left << setw(15) << foodName
+                << setw(10) << itemCode
+                << setw(10) << size
+                << right << setw(10) << itemQuantity << endl;
+
+            totalCost += subtotal;
+
+        } while (toupper(itemCode) != 'E' && (toupper(itemCode) == 'A' || toupper(itemCode) == 'B' || toupper(itemCode) == 'C' || toupper(itemCode) == 'D'));
+        cout << setw(10) << left << "Are you a member? (y/n): " << endl;
+        cin >> memberCheck;
+
+        if (memberCheck == 'y' || memberCheck == 'Y')
+        {
+            totalCost = totalCost * 0.90;
+
         }
-        else if (size == 'm' || size == 'M'){
-            unitPrice = 4.50;
-        }
-        else if (size == 'l' || size == 'L'){
-            unitPrice = 5.50;
-        }
-    
-    }
-    else if (itemCode == 'b' || itemCode == 'B'){
-        foodName = "Burger";
-        if (size == 's' || size == 'S'){
-            unitPrice = 2.99;
-        }
-        else if (size == 'm' || size == 'M'){
-            unitPrice = 4.99;
-        }
-        else if (size == 'l' || size == 'L'){
-            unitPrice = 6.99;
+
+        cin.ignore();
+        cout << setw(10) << left << "Enter cashier notes: " << endl;
+        getline(cin, cashierNotes);
+        cout << "How much do you want to tip" << endl;
+        cout << "A. 15% = $" << fixed << setprecision(2) << totalCost * 0.15 << endl;
+        cout << "B. 20% = $" << fixed << setprecision(2) << totalCost * 0.20 << endl;
+        cout << "C. 25% = $" << fixed << setprecision(2) << totalCost * 0.25 << endl;
+        cout << "D. Other" << endl;
+        cout << "E. No Tip" << endl;
+        cin >> tips;
+        if (tips == 'a' || tips == 'A') {
+            tipCost = totalCost * 0.15;
         }
 
-    }
-    else if (itemCode == 'c' || itemCode == 'C'){
-        foodName = "Vinyl Combo";
-        if (size == 's' || size == 'S'){
-            unitPrice = 19.99;
-        }
-        else if (size == 'm' || size == 'M'){
-            unitPrice = 20.99;
-        }
-        else if (size == 'l' || size == 'L'){
-            unitPrice = 21.99;
+        else if (tips == 'b' || tips == 'B') {
+            tipCost = totalCost * 0.15;
         }
 
-    }
-    else if (itemCode == 'd' || itemCode == 'D'){
-        foodName = "Churro";
-        if (size == 's' || size == 'S'){
-            unitPrice = 1.99;
+        else if (tips == 'c' || tips == 'C') {
+            tipCost = totalCost * 0.15;
         }
-        else if (size == 'm' || size == 'M'){
-            unitPrice = 2.99;
+
+        else if (tips == 'd' || tips == 'D') {
+            cout << "Please enter how much you'd like to tip:" << endl;
+            cin >> tipCost;
         }
-        else if (size == 'l' || size == 'L'){
-            unitPrice = 3.99;
+        else if (tips == 'e' || tips == 'E') {
+            tipCost = 0.00;
         }
-        
+        cout << "please enter customer's name:" << endl;
+        cin >> customerName;
+        cout << "\n----- RECEIPT -----\n";
+        cout << "Customer Name: " << customerName << endl;
+        cout << left << setw(15) << "Item"
+            << setw(10) << "Code"
+            << setw(10) << "Size"
+            << setw(10) << "Qty"
+            << setw(10) << "Subtotal" << endl;
+
+        cout << reciept.str(); // this makes the reciept items appear
+
+        cout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
+
+        cout << "\n----- INVENTORY AUDIT -----\n";
+
+        cout << left
+            << setw(15) << "Item"
+            << setw(10) << "Code"
+            << setw(10) << "Size"
+            << right << setw(10) << "Qty" << endl;
+
+        cout << audit.str(); // this makes the inventory audit items appear
+
+        stateTax = totalCost * 0.065;
+        countyTax = totalCost * 0.005;
+        municipalTax = totalCost * 0.02125;
+        totalCost = (totalCost + stateTax + countyTax + municipalTax + tipCost);
+        cout << "\n----- TAXES -----\n";
+
+        cout << left
+            << setw(25) << "Tax"
+            << setw(15) << "Percentage"
+            << setw(10) << "Cost" << endl
+            << setw(25) << "Arkansas State Tax:"
+            << setw(15) << "6.5%"
+            << setw(10) << fixed << setprecision(2) << stateTax << endl
+            << setw(25) << "Faulkner County Tax:"
+            << setw(15) << "0.5%"
+            << setw(10) << fixed << setprecision(2) << countyTax << endl
+            << setw(25) << "Conway Municipal Tax:"
+            << setw(15) << "0.02125%"
+            << setw(10) << fixed << setprecision(2) << municipalTax << endl;
+
+        cout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
+        cout << left << "Loyalty Points: ";
+        loyalty = totalCost / 3;
+        grandTotal += totalCost;
+        totalCustomers++;
+        for (int count = 0; count < loyalty; count++) {
+            cout << "*";
+        }
+        cout << endl << "is there another customer? (y/n)?" << endl;
+            cin >> cashierResponse;
+            if (cashierResponse == 'N' || cashierResponse == 'n') {
+                anotherCustomer = false;
+                cout << "Total Sales for the day: $" << grandTotal << endl
+                    << "Total Customers for the day: " << totalCustomers << endl;
+            }
     }
-    else if (itemCode == 'e' || itemCode == 'E'){
-        break;
-    }
-
-    cout << setw(10) << left << "Enter quantity: " << endl;
-    cin >> itemQuantity;
-
-    double subtotal = itemQuantity * unitPrice;
-
-    reciept // this is the accumulator for the reciept items
-        << left << setw(15) << foodName
-        << setw(10) << itemCode
-        << setw(10) << size
-        << setw(10) << itemQuantity
-        << fixed << setprecision(2) << subtotal << endl;
-
-    audit // this is the accumulator for the audit items
-        << left << setw(15) << foodName
-        << setw(10) << itemCode
-        << setw(10) << size
-        << right << setw(10) << itemQuantity << endl;
-
-    totalCost += subtotal;
-
-    } while (toupper(itemCode) != 'E' && (toupper(itemCode) == 'A' || toupper(itemCode) == 'B' || toupper(itemCode) == 'C' || toupper(itemCode) == 'D'));
-    cout << setw(10) << left << "Are you a member? (y/n): " << endl;
-    cin >> memberCheck;
-    
-    if (memberCheck == 'y' || memberCheck == 'Y')
-    {
-        totalCost = totalCost * 0.90;
-
-    }
-
-    cin.ignore();
-    cout << setw(10) << left << "Enter cashier notes: " << endl;
-    getline(cin, cashierNotes);
-    cout << "How much do you want to tip" << endl;
-    cout << "A. 15% = $" << fixed << setprecision(2) << totalCost * 0.15 << endl;
-    cout << "B. 20% = $" << fixed << setprecision(2) << totalCost * 0.20 << endl;
-    cout << "C. 25% = $" << fixed << setprecision(2) << totalCost * 0.25 << endl;
-    cout << "D. Other" << endl;
-    cout << "E. No Tip" << endl;
-    cin >> tips;
-    if (tips == 'a' || tips == 'A'){
-        tipCost = totalCost * 0.15;
-    }
-
-    else if (tips == 'b' || tips == 'B'){
-        tipCost = totalCost * 0.15;
-    }
-
-    else if (tips == 'c' || tips == 'C'){
-        tipCost = totalCost * 0.15;
-    }
-
-    else if (tips == 'd' || tips == 'D'){
-        cout << "Please enter how much you'd like to tip:" << endl;
-        cin >> tipCost;
-    }
-    else if (tips == 'e' || tips == 'E'){
-        tipCost = 0.00;
-    }
-    cout << "please enter customer's name:" << endl;
-    cin >> customerName;
-     cout << "\n----- RECEIPT -----\n";
-     cout << "Customer Name: " << customerName << endl;
-     cout << left << setw(15) << "Item"
-         << setw(10) << "Code"
-         << setw(10) << "Size"
-         << setw(10) << "Qty"
-         << setw(10) << "Subtotal" << endl;
-
-     cout << reciept.str(); // this makes the reciept items appear
-
-     cout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
-
-     cout << "\n----- INVENTORY AUDIT -----\n";
-
-     cout << left
-         << setw(15) << "Item"
-         << setw(10) << "Code"
-         << setw(10) << "Size"
-         << right << setw(10) << "Qty" << endl;
-
-     cout << audit.str(); // this makes the inventory audit items appear
-
-     stateTax = totalCost * 0.065;
-     countyTax = totalCost * 0.005;
-     municipalTax = totalCost * 0.02125;
-     totalCost = (totalCost + stateTax + countyTax + municipalTax + tipCost);
-     cout << "\n----- TAXES -----\n";
-
-     cout << left
-         << setw(25) << "Tax"
-         << setw(15) << "Percentage"
-         << setw(10) << "Cost" << endl
-         << setw(25) << "Arkansas State Tax:"
-         << setw(15) << "6.5%"
-         << setw(10) << fixed << setprecision(2) << stateTax << endl
-         << setw(25) << "Faulkner County Tax:"
-         << setw(15) << "0.5%"
-         << setw(10) << fixed << setprecision(2) << countyTax << endl
-         << setw(25) << "Conway Municipal Tax:"
-         << setw(15) << "0.02125%"
-         << setw(10) << fixed << setprecision(2) << municipalTax << endl;
-
-       cout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost;
 }
