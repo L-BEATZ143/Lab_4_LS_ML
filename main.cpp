@@ -170,11 +170,11 @@ int main() {
         }
 
         else if (tips == 'b' || tips == 'B') {
-            tipCost = totalCost * 0.15;
+            tipCost = totalCost * 0.20;
         }
 
         else if (tips == 'c' || tips == 'C') {
-            tipCost = totalCost * 0.15;
+            tipCost = totalCost * 0.25;
         }
 
         else if (tips == 'd' || tips == 'D') {
