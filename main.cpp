@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <cctype>
 #include <sstream>
-
+#include <fstream>
 int main() {
     using namespace std;
     string foodName;
@@ -29,7 +29,10 @@ int main() {
     bool anotherCustomer;
     char cashierResponse;
     anotherCustomer = true;
-
+    string food1, food2, food3, food4;
+    ifstream inputFile ("menu_text.txt");
+    
+    double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
     while (anotherCustomer) {
         loyalty = 0;
         cout << setw(15) << left << "Items"
