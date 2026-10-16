@@ -33,6 +33,18 @@ int main() {
     ifstream inputFile ("menu_text.txt");
     
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
+    getline(inputFile, food1);
+    inputFile >> food1s >> food1m >> food1l;
+    inputFile.ignore();
+    getline(inputFile, food2);
+    inputFile >> food2s >> food2m >> food2l;
+    inputFile.ignore();
+    getline(inputFile, food3);
+    inputFile >> food3s >> food3m >> food3l;
+    inputFile.ignore();
+    getline(inputFile, food4);
+    inputFile >> food4s >> food4m >> food4l;
+    inputFile.ignore();
     while (anotherCustomer) {
         loyalty = 0;
         cout << setw(15) << left << "Items"
@@ -73,54 +85,54 @@ int main() {
                 break;
             }
             else if (itemCode == 'a' || itemCode == 'A') {
-                foodName = "Slushie";
+                foodName = food1;
                 if (size == 's' || size == 'S') {
-                    unitPrice = 3.50;
+                    unitPrice = food1s;
                 }
                 else if (size == 'm' || size == 'M') {
-                    unitPrice = 4.50;
+                    unitPrice = food1m;
                 }
                 else if (size == 'l' || size == 'L') {
-                    unitPrice = 5.50;
+                    unitPrice = food1l;
                 }
 
             }
             else if (itemCode == 'b' || itemCode == 'B') {
-                foodName = "Burger";
+                foodName = food2;
                 if (size == 's' || size == 'S') {
-                    unitPrice = 2.99;
+                    unitPrice = food2s;
                 }
                 else if (size == 'm' || size == 'M') {
-                    unitPrice = 4.99;
+                    unitPrice = food2m;
                 }
                 else if (size == 'l' || size == 'L') {
-                    unitPrice = 6.99;
+                    unitPrice = food2l;
                 }
 
             }
             else if (itemCode == 'c' || itemCode == 'C') {
-                foodName = "Vinyl Combo";
+                foodName = food3;
                 if (size == 's' || size == 'S') {
-                    unitPrice = 19.99;
+                    unitPrice = food3s;
                 }
                 else if (size == 'm' || size == 'M') {
-                    unitPrice = 20.99;
+                    unitPrice = food3m;
                 }
                 else if (size == 'l' || size == 'L') {
-                    unitPrice = 21.99;
+                    unitPrice = food3l;
                 }
 
             }
             else if (itemCode == 'd' || itemCode == 'D') {
-                foodName = "Churro";
+                foodName = food4;
                 if (size == 's' || size == 'S') {
-                    unitPrice = 1.99;
+                    unitPrice = food4s;
                 }
                 else if (size == 'm' || size == 'M') {
-                    unitPrice = 2.99;
+                    unitPrice = food4m;
                 }
                 else if (size == 'l' || size == 'L') {
-                    unitPrice = 3.99;
+                    unitPrice = food4l;
                 }
 
             }
