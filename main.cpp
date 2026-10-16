@@ -52,25 +52,25 @@ int main() {
             << setw(15) << "Medium (M)"
             << setw(15) << "Large (L)" << endl;
 
-        cout << setw(15) << left << "A. Slushie"
-            << setw(15) << "3.50"
-            << setw(15) << "4.50"
-            << setw(15) << "5.50" << endl;
+        cout << setw(15) << left << ("A. " + food1)
+            << setw(15) << food1s
+            << setw(15) << food1m
+            << setw(15) << food1l << endl;
 
-        cout << setw(15) << left << "B. Burger"
-            << setw(15) << "2.99"
-            << setw(15) << "4.99"
-            << setw(15) << "6.99" << endl;
+        cout << setw(15) << left << ("B. " + food2)
+            << setw(15) << food2s
+            << setw(15) << food2m
+            << setw(15) << food2l << endl;
 
-        cout << setw(15) << left << "C. Vinyl Combo"
-            << setw(15) << "19.99"
-            << setw(15) << "20.99"
-            << setw(15) << "21.99" << endl;
+        cout << setw(15) << left << ("C. " + food3)
+            << setw(15) << food3s
+            << setw(15) << food3m
+            << setw(15) << food3l << endl;
 
-        cout << setw(15) << left << "D. Churro"
-            << setw(15) << "1.99"
-            << setw(15) << "2.99"
-            << setw(15) << "3.99" << endl;
+        cout << setw(15) << left << ("D. " + food4)
+            << setw(15) << food4s
+            << setw(15) << food4m
+            << setw(15) << food4l << endl;
         cout << "E. Checkout" << endl;
         do {
 
