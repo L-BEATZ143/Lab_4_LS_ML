@@ -201,33 +201,57 @@ int main() {
         }
         cout << "please enter customer's name:" << endl;
         cin >> customerName;
+        
+        ofstream receipt_fout;
+        receipt_fout.open("Reciept.txt");
+
         cout << "\n----- RECEIPT -----\n";
+        receipt_fout << "\n----- RECEIPT -----\n";
+
         cout << "Customer Name: " << customerName << endl;
+        receipt_fout << "Customer Name: " << customerName << endl;
+
         cout << left << setw(15) << "Item"
+            << setw(10) << "Code"
+            << setw(10) << "Size"
+            << setw(10) << "Qty"
+            << setw(10) << "Subtotal" << endl;
+        receipt_fout << left << setw(15) << "Item"
             << setw(10) << "Code"
             << setw(10) << "Size"
             << setw(10) << "Qty"
             << setw(10) << "Subtotal" << endl;
 
         cout << reciept.str(); // this makes the reciept items appear
+        receipt_fout << reciept.str();
 
         cout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
+        receipt_fout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
 
         cout << "\n----- INVENTORY AUDIT -----\n";
+        receipt_fout << "\n----- INVENTORY AUDIT -----\n";
 
         cout << left
             << setw(15) << "Item"
             << setw(10) << "Code"
             << setw(10) << "Size"
             << right << setw(10) << "Qty" << endl;
+        receipt_fout << left
+            << setw(15) << "Item"
+            << setw(10) << "Code"
+            << setw(10) << "Size"
+            << right << setw(10) << "Qty" << endl;
 
         cout << audit.str(); // this makes the inventory audit items appear
+        receipt_fout << audit.str();
 
         stateTax = totalCost * 0.065;
         countyTax = totalCost * 0.005;
         municipalTax = totalCost * 0.02125;
         totalCost = (totalCost + stateTax + countyTax + municipalTax + tipCost);
+
         cout << "\n----- TAXES -----\n";
+        receipt_fout << "\n----- TAXES -----\n";
 
         cout << left
             << setw(25) << "Tax"
@@ -242,6 +266,25 @@ int main() {
             << setw(25) << "Conway Municipal Tax:"
             << setw(15) << "0.02125%"
             << setw(10) << fixed << setprecision(2) << municipalTax << endl;
+        receipt_fout << left
+            << setw(25) << "Tax"
+            << setw(15) << "Percentage"
+            << setw(10) << "Cost" << endl
+            << setw(25) << "Arkansas State Tax:"
+            << setw(15) << "6.5%"
+            << setw(10) << fixed << setprecision(2) << stateTax << endl
+            << setw(25) << "Faulkner County Tax:"
+            << setw(15) << "0.5%"
+            << setw(10) << fixed << setprecision(2) << countyTax << endl
+            << setw(25) << "Conway Municipal Tax:"
+            << setw(15) << "0.02125%"
+            << setw(10) << fixed << setprecision(2) << municipalTax << endl;
+
+        cout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
+        receipt_fout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
+
+        cout << left << "Loyalty Points: ";
+        receipt_fout << left << "Loyalty Points: ";
 
         cout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
         cout << left << "Loyalty Points: ";
