@@ -28,6 +28,10 @@ int main() {
     int totalCustomers = 0;
     bool anotherCustomer;
     char cashierResponse;
+    int food1Stock = 0;
+    int food2Stock = 0;
+    int food3Stock = 0;
+    int food4Stock = 0;
     anotherCustomer = true;
     string food1, food2, food3, food4;
     ifstream inputFile ("menu_text.txt");
@@ -86,6 +90,7 @@ int main() {
             }
             else if (itemCode == 'a' || itemCode == 'A') {
                 foodName = food1;
+                food1Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food1s;
                 }
@@ -99,6 +104,7 @@ int main() {
             }
             else if (itemCode == 'b' || itemCode == 'B') {
                 foodName = food2;
+                food2Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food2s;
                 }
@@ -112,6 +118,7 @@ int main() {
             }
             else if (itemCode == 'c' || itemCode == 'C') {
                 foodName = food3;
+                food3Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food3s;
                 }
@@ -125,6 +132,7 @@ int main() {
             }
             else if (itemCode == 'd' || itemCode == 'D') {
                 foodName = food4;
+                food4Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food4s;
                 }
@@ -299,7 +307,13 @@ int main() {
             if (cashierResponse == 'N' || cashierResponse == 'n') {
                 anotherCustomer = false;
                 cout << "Total Sales for the day: $" << grandTotal << endl
-                    << "Total Customers for the day: " << totalCustomers << endl;
+                    << "Total Customers for the day: " << totalCustomers << endl
+                    << "Daily Inventory" << endl
+                    << setw(20) << "Item" << setw(10) << "Start" << setw(10) << "Change" << setw(10) << "End" << endl
+                    << setw(20) << food1 << setw(10) << 50 << setw(10) << food1Stock << 50 + (food1Stock) << endl
+                    << setw(20) << food2 << setw(10) << 50 << setw(10) << food2Stock << 50 + (food2Stock) << endl
+                    << setw(20) << food3 << setw(10) << 50 << setw(10) << food3Stock << 50 + (food3Stock) << endl
+                    << setw(20) << food4 << setw(10) << 50 << setw(10) << food4Stock << 50 + (food4Stock) << endl;
             }
     }
 }
