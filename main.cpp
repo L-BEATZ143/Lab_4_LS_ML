@@ -28,10 +28,10 @@ int main() {
     int totalCustomers = 0;
     bool anotherCustomer;
     char cashierResponse;
-    int food1Stock = 0;
-    int food2Stock = 0;
-    int food3Stock = 0;
-    int food4Stock = 0;
+    double food1Stock = 0;
+    double food2Stock = 0;
+    double food3Stock = 0;
+    double food4Stock = 0;
     anotherCustomer = true;
     string food1, food2, food3, food4;
     ifstream inputFile ("menu_text.txt");
@@ -90,66 +90,95 @@ int main() {
             }
             else if (itemCode == 'a' || itemCode == 'A') {
                 foodName = food1;
-                food1Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food1s;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food1Stock -= itemQuantity;
                 }
                 else if (size == 'm' || size == 'M') {
                     unitPrice = food1m;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food1Stock -= itemQuantity;
                 }
                 else if (size == 'l' || size == 'L') {
                     unitPrice = food1l;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food1Stock -= itemQuantity;
                 }
 
             }
             else if (itemCode == 'b' || itemCode == 'B') {
                 foodName = food2;
-                food2Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food2s;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food2Stock -= itemQuantity;
                 }
                 else if (size == 'm' || size == 'M') {
                     unitPrice = food2m;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food2Stock -= itemQuantity;
                 }
                 else if (size == 'l' || size == 'L') {
                     unitPrice = food2l;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food2Stock -= itemQuantity;
                 }
 
             }
             else if (itemCode == 'c' || itemCode == 'C') {
                 foodName = food3;
-                food3Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food3s;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food3Stock -= itemQuantity;
                 }
                 else if (size == 'm' || size == 'M') {
                     unitPrice = food3m;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food3Stock -= itemQuantity;
                 }
                 else if (size == 'l' || size == 'L') {
                     unitPrice = food3l;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food3Stock -= itemQuantity;
                 }
 
             }
             else if (itemCode == 'd' || itemCode == 'D') {
                 foodName = food4;
-                food4Stock--;
                 if (size == 's' || size == 'S') {
                     unitPrice = food4s;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food4Stock -= itemQuantity;
                 }
                 else if (size == 'm' || size == 'M') {
                     unitPrice = food4m;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food4Stock -= itemQuantity;
                 }
                 else if (size == 'l' || size == 'L') {
                     unitPrice = food4l;
+                    cout << setw(10) << left << "Enter quantity: " << endl;
+                    cin >> itemQuantity;
+                    food4Stock -= itemQuantity;
                 }
 
             }
             else if (itemCode == 'e' || itemCode == 'E') {
                 break;
             }
-
-            cout << setw(10) << left << "Enter quantity: " << endl;
-            cin >> itemQuantity;
 
             double subtotal = itemQuantity * unitPrice;
 
