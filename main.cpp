@@ -33,9 +33,9 @@ int main() {
     double food3Stock = 0;
     double food4Stock = 0;
     anotherCustomer = true;
-    string food1, food2, food3, food4;
-    ifstream inputFile ("menu_text.txt");
     
+    ifstream inputFile ("menu_text.txt");
+    string food1, food2, food3, food4;
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
     getline(inputFile, food1);
     inputFile >> food1s >> food1m >> food1l;

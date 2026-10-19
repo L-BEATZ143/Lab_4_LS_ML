@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(cpp_starter_app main.cpp)
-
+configure_file(menu_text.txt menu_text.txt COPYONLY)
 if (MSVC)
     target_compile_options(cpp_starter_app PRIVATE /W4)
 else()
