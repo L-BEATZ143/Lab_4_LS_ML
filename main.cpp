@@ -17,8 +17,8 @@ void initializeFood(
     double& food1s, double& food1m, double& food1l,
     double& food2s, double& food2m, double& food2l,
     double& food3s, double& food3m, double& food3l,
-    double& food4s, double& food4m, double& food4l
-);
+    double& food4s, double& food4m, double& food4l);
+ostringstream foodMenu(ostringstream& menu);
 int main() {
     string foodName; //holds the name of the food set by the item code
     string cashierNotes; 
@@ -49,6 +49,7 @@ int main() {
     anotherCustomer = true;
     string food1, food2, food3, food4;
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
+    ostringstream menu;
 
     initializeFood(food1, food2, food3, food4,
     food1s, food1m, food1l,
@@ -58,31 +59,7 @@ int main() {
 
     while (anotherCustomer) {
         loyalty = 0;
-        cout << setw(15) << left << "Items"
-            << setw(15) << "Small (S)"
-            << setw(15) << "Medium (M)"
-            << setw(15) << "Large (L)" << endl;
-
-        cout << setw(15) << left << ("A. " + food1)
-            << setw(15) << food1s
-            << setw(15) << food1m
-            << setw(15) << food1l << endl;
-
-        cout << setw(15) << left << ("B. " + food2)
-            << setw(15) << food2s
-            << setw(15) << food2m
-            << setw(15) << food2l << endl;
-
-        cout << setw(15) << left << ("C. " + food3)
-            << setw(15) << food3s
-            << setw(15) << food3m
-            << setw(15) << food3l << endl;
-
-        cout << setw(15) << left << ("D. " + food4)
-            << setw(15) << food4s
-            << setw(15) << food4m
-            << setw(15) << food4l << endl;
-        cout << "E. Checkout" << endl;
+        foodMenu(menu);
         do {
 
 
@@ -423,4 +400,34 @@ void initializeFood(string &food1, string &food2, string &food3, string &food4,
     inputFile.ignore(); //possibly unneccesary? test to see
     inputFile.close();
     
+}
+ostringstream& foodMenu(ostringstream& menu,
+    string food1, string food1s, string food1m, string food1l,
+    string food2, string food2s, string food2m, string food2l,
+    string food3, string food3s, string food3m, string food3l,
+    string food4, string food4s, string food4m, string food4l)
+    {
+    menu
+        << setw(15) << left << "Items"
+        << setw(15) << "Small (S)"
+        << setw(15) << "Medium (M)"
+        << setw(15) << "Large (L)" << endl
+        << setw(15) << left << "A. " << food1
+        << setw(15) << food1s
+        << setw(15) << food1m
+        << setw(15) << food1l << endl
+        << setw(15) << left << "B. " << food2
+        << setw(15) << food2s
+        << setw(15) << food2m
+        << setw(15) << food2l << endl
+        << setw(15) << left << "C. " << food3
+        << setw(15) << food3s
+        << setw(15) << food3m
+        << setw(15) << food3l << endl
+        << setw(15) << left << "D. " << food4
+        << setw(15) << food4s
+        << setw(15) << food4m
+        << setw(15) << food4l << endl
+        << "E. Checkout" << endl;
+    return menu;
 }
