@@ -4,17 +4,20 @@
 #include <cctype>
 #include <sstream>
 #include <fstream>
+
+using namespace std; //Prevents the tedium of typing std:: 
+
 double setUnitPrice(char itemCode, char size,
 double food1s, double food1m, double food1l,
 double food2s, double food2m, double food2l,
 double food3s, double food3m, double food3l,
-double food4s, double food4m, double food4l);
+double food4s, double food4m, double food4l); // Neccesary to apply to the Main and setUnitPrice functions
+
 int main() {
-    using namespace std;
-    string foodName;
-    string cashierNotes;
-    char itemCode;
-    int itemQuantity;
+    string foodName; //holds the name of the food set by the item code
+    string cashierNotes; 
+    char itemCode; 
+    int itemQuantity; 
     double unitPrice;
     char memberCheck;
     char size;
@@ -29,7 +32,7 @@ int main() {
     ostringstream audit;
     double totalCost = 0;
     int loyalty;
-    double grandTotal = 0;
+    double dayTotal = 0; //end of day total
     int totalCustomers = 0;
     bool anotherCustomer;
     char cashierResponse;
@@ -38,22 +41,11 @@ int main() {
     double food3Stock = 0;
     double food4Stock = 0;
     anotherCustomer = true;
-    
-    ifstream inputFile ("menu_text.txt");
     string food1, food2, food3, food4;
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
-    getline(inputFile, food1);
-    inputFile >> food1s >> food1m >> food1l;
-    inputFile.ignore();
-    getline(inputFile, food2);
-    inputFile >> food2s >> food2m >> food2l;
-    inputFile.ignore();
-    getline(inputFile, food3);
-    inputFile >> food3s >> food3m >> food3l;
-    inputFile.ignore();
-    getline(inputFile, food4);
-    inputFile >> food4s >> food4m >> food4l;
-    inputFile.ignore();
+
+    initializeFood(food1, food2, food3, food4, food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l);
+
     while (anotherCustomer) {
         loyalty = 0;
         cout << setw(15) << left << "Items"
@@ -335,7 +327,7 @@ int main() {
         cout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
         cout << left << "Loyalty Points: ";
         loyalty = totalCost / 3;
-        grandTotal += totalCost;
+        dayTotal += totalCost;
         totalCustomers++;
         for (int count = 0; count < loyalty; count++) {
             cout << "*";
@@ -344,7 +336,7 @@ int main() {
             cin >> cashierResponse;
             if (cashierResponse == 'N' || cashierResponse == 'n') {
                 anotherCustomer = false;
-                cout << "Total Sales for the day: $" << grandTotal << endl
+                cout << "Total Sales for the day: $" << dayTotal << endl
                     << "Total Customers for the day: " << totalCustomers << endl
                     << "Daily Inventory" << endl
                     << setw(20) << "Item" << setw(10) << "Start" << setw(10) << "Change" << setw(10) << "End" << endl
@@ -396,4 +388,29 @@ double price = 0.0;
     }
 
     return price;
+}
+void initializeFood(string &food1, string &food2, string &food3, string &food4,
+    double &food1s, double &food1m, double &food1l, 
+    double &food2s, double &food2m, double &food2l, 
+    double &food3s, double &food3m, double &food3l,
+    double &food4s, double &food4m, double &food4l)
+    {
+    ifstream inputFile("menu_text.txt"); //marks "menu_text.txt" for file to read from
+
+    getline(inputFile, food1); //sets food item 1 to the item specified in the file
+    inputFile >> food1s >> food1m >> food1l; //sets the prices for food item 1's small, medium, and large options
+    inputFile.ignore(); //resets for next item
+
+    getline(inputFile, food2); //sets food item 2 to the item specified in the file
+    inputFile >> food2s >> food2m >> food2l; //sets the prices for food item 2's small, medium, and large options
+    inputFile.ignore(); //resets for next item
+
+    getline(inputFile, food3); //sets food item 3 to the item specified in the file
+    inputFile >> food3s >> food3m >> food3l; //sets the prices for food item 3's small, medium, and large options
+    inputFile.ignore(); //resets for next item
+
+    getline(inputFile, food4); //sets food item 4 to the item specified in the file
+    inputFile >> food4s >> food4m >> food4l; //sets the prices for food item 4's small, medium, and large options
+    inputFile.ignore(); //possibly unneccesary? test to see
+    inputFile.close();
 }
