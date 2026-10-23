@@ -4,7 +4,11 @@
 #include <cctype>
 #include <sstream>
 #include <fstream>
-double setUnitPrice();
+double setUnitPrice(char itemCode, char size,
+double food1s, double food1m, double food1l,
+double food2s, double food2m, double food2l,
+double food3s, double food3m, double food3l,
+double food4s, double food4m, double food4l);
 int main() {
     using namespace std;
     string foodName;
@@ -179,7 +183,11 @@ int main() {
             else if (itemCode == 'e' || itemCode == 'E') {
                 break;
             }
-            unitPrice = setUnitPrice(price);
+            unitPrice = setUnitPrice(itemCode, size,
+                food1s, food1m, food1l,
+                food2s, food2m, food2l,
+                food3s, food3m, food3l,
+                food4s, food4m, food4l);
 
             double subtotal = itemQuantity * unitPrice;
 
@@ -387,5 +395,5 @@ double price = 0.0;
             return price = food4l;
     }
 
-    return 0.0;
+    return price;
 }
