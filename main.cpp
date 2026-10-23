@@ -18,7 +18,11 @@ void initializeFood(
     double& food2s, double& food2m, double& food2l,
     double& food3s, double& food3m, double& food3l,
     double& food4s, double& food4m, double& food4l);
-ostringstream foodMenu(ostringstream& menu);
+ostringstream& foodMenu(ostringstream& menu,
+    string food1, double food1s, double food1m, double food1l,
+    string food2, double food2s, double food2m, double food2l,
+    string food3, double food3s, double food3m, double food3l,
+    string food4, double food4s, double food4m, double food4l);
 int main() {
     string foodName; //holds the name of the food set by the item code
     string cashierNotes; 
@@ -59,8 +63,13 @@ int main() {
 
     while (anotherCustomer) {
         loyalty = 0;
-        foodMenu(menu);
-        do {
+        foodMenu(menu,
+            food1, food1s, food1m, food1l,
+            food2, food2s, food2m, food2l,
+            food3, food3s, food3m, food3l,
+            food4, food4s, food4m, food4l);
+
+        cout << menu.str();        do {
 
 
             cout << "enter item code" << endl;
@@ -402,10 +411,10 @@ void initializeFood(string &food1, string &food2, string &food3, string &food4,
     
 }
 ostringstream& foodMenu(ostringstream& menu,
-    string food1, string food1s, string food1m, string food1l,
-    string food2, string food2s, string food2m, string food2l,
-    string food3, string food3s, string food3m, string food3l,
-    string food4, string food4s, string food4m, string food4l)
+    string food1, double food1s, double food1m, double food1l,
+    string food2, double food2s, double food2m, double food2l,
+    string food3, double food3s, double food3m, double food3l,
+    string food4, double food4s, double food4m, double food4l)
     {
     menu
         << setw(15) << left << "Items"
