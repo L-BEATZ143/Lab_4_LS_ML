@@ -12,7 +12,13 @@ double food1s, double food1m, double food1l,
 double food2s, double food2m, double food2l,
 double food3s, double food3m, double food3l,
 double food4s, double food4m, double food4l); // Neccesary to apply to the Main and setUnitPrice functions
-void initializeFood(string food1, string food2, string food3, double food4, double food1s, double food1m, double food1l, double food2s, double food2m, double food2l, double food3s, double food3m, double food3l, double food4s, double food4m, double food4l);
+void initializeFood(
+    string& food1, string& food2, string& food3, string& food4,
+    double& food1s, double& food1m, double& food1l,
+    double& food2s, double& food2m, double& food2l,
+    double& food3s, double& food3m, double& food3l,
+    double& food4s, double& food4m, double& food4l
+);
 int main() {
     string foodName; //holds the name of the food set by the item code
     string cashierNotes; 
@@ -44,7 +50,11 @@ int main() {
     string food1, food2, food3, food4;
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
 
-    
+    initializeFood(food1, food2, food3, food4,
+    food1s, food1m, food1l,
+    food2s, food2m, food2l,
+    food3s, food3m, food3l,
+    food4s, food4m, food4l);
 
     while (anotherCustomer) {
         loyalty = 0;
