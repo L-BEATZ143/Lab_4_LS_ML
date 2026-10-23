@@ -4,6 +4,7 @@
 #include <cctype>
 #include <sstream>
 #include <fstream>
+double setUnitPrice();
 int main() {
     using namespace std;
     string foodName;
@@ -91,7 +92,7 @@ int main() {
             else if (itemCode == 'a' || itemCode == 'A') {
                 foodName = food1;
                 if (size == 's' || size == 'S') {
-                    unitPrice = food1s;
+                    
                     cout << setw(10) << left << "Enter quantity: " << endl;
                     cin >> itemQuantity;
                     food1Stock -= itemQuantity;
@@ -108,7 +109,6 @@ int main() {
                     cin >> itemQuantity;
                     food1Stock -= itemQuantity;
                 }
-
             }
             else if (itemCode == 'b' || itemCode == 'B') {
                 foodName = food2;
@@ -179,6 +179,7 @@ int main() {
             else if (itemCode == 'e' || itemCode == 'E') {
                 break;
             }
+            unitPrice = setUnitPrice(price);
 
             double subtotal = itemQuantity * unitPrice;
 
@@ -345,4 +346,46 @@ int main() {
                     << setw(20) << food4 << setw(10) << 50 << setw(10) << food4Stock << 50 + (food4Stock) << endl;
             }
     }
+}
+double setUnitPrice(char itemCode, char size,
+    double food1s, double food1m, double food1l,
+    double food2s, double food2m, double food2l,
+    double food3s, double food3m, double food3l,
+    double food4s, double food4m, double food4l)
+{
+double price = 0.0;
+    if (itemCode == 'a' || itemCode == 'A') {
+        if (size == 's' || size == 'S')
+            return price = food1s;
+        else if (size == 'm' || size == 'M')
+            return price = food1m;
+        else if (size == 'l' || size == 'L')
+            return price = food1l;
+    }
+    else if (itemCode == 'b' || itemCode == 'B') {
+        if (size == 's' || size == 'S')
+            return price = food2s;
+        else if (size == 'm' || size == 'M')
+            return price = food2m;
+        else if (size == 'l' || size == 'L')
+            return price = food2l;
+    }
+    else if (itemCode == 'c' || itemCode == 'C') {
+        if (size == 's' || size == 'S')
+            return price = food3s;
+        else if (size == 'm' || size == 'M')
+            return price = food3m;
+        else if (size == 'l' || size == 'L')
+            return price = food3l;
+    }
+    else if (itemCode == 'd' || itemCode == 'D') {
+        if (size == 's' || size == 'S')
+            return price = food4s;
+        else if (size == 'm' || size == 'M')
+            return price = food4m;
+        else if (size == 'l' || size == 'L')
+            return price = food4l;
+    }
+
+    return 0.0;
 }
