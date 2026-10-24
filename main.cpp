@@ -23,6 +23,7 @@ ostringstream& foodMenu(ostringstream& menu,
     string food2, double food2s, double food2m, double food2l,
     string food3, double food3s, double food3m, double food3l,
     string food4, double food4s, double food4m, double food4l);
+ostringstream& auditReciept(ostringstream& audit, ostringstream& reciept);
 int main() {
     string foodName; //holds the name of the food set by the item code
     string cashierNotes; 
@@ -46,10 +47,10 @@ int main() {
     int totalCustomers = 0;
     bool anotherCustomer;
     char cashierResponse;
-    double food1Stock = 0;
-    double food2Stock = 0;
-    double food3Stock = 0;
-    double food4Stock = 0;
+    int food1Stock = 0;
+    int food2Stock = 0;
+    int food3Stock = 0;
+    int food4Stock = 0;
     anotherCustomer = true;
     string food1, food2, food3, food4;
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
@@ -107,21 +108,8 @@ int main() {
                 cin >> itemQuantity;
 
                 double subtotal = itemQuantity * unitPrice;
-            
-            
 
-            reciept // this is the accumulator for the reciept items
-                << left << setw(15) << foodName
-                << setw(10) << itemCode
-                << setw(10) << size
-                << setw(10) << itemQuantity
-                << fixed << setprecision(2) << subtotal << endl;
-
-            audit // this is the accumulator for the audit items
-                << left << setw(15) << foodName
-                << setw(10) << itemCode
-                << setw(10) << size
-                << right << setw(10) << itemQuantity << endl;
+            auditReciept(audit, reciept);
 
             totalCost += subtotal;
             if (toupper(itemCode) == 'A') {
@@ -285,6 +273,7 @@ int main() {
             }
     }
 }
+// Functions begin
 double setUnitPrice(char itemCode, char size,
     double food1s, double food1m, double food1l,
     double food2s, double food2m, double food2l,
@@ -381,4 +370,20 @@ ostringstream& foodMenu(ostringstream& menu,
         << setw(15) << fixed << setprecision(2) << food4l << endl
         << "E. Checkout" << endl;
     return menu;
+}
+ostringstream& auditReciept(ostringstream& audit, ostringstream& reciept, string foodName, char itemCode, char size, int itemQuantity, double subtotal)
+    {
+    reciept // this is the accumulator for the reciept items
+        << left << setw(15) << foodName
+        << setw(10) << itemCode
+        << setw(10) << size
+        << setw(10) << itemQuantity
+        << fixed << setprecision(2) << subtotal << endl;
+
+    audit // this is the accumulator for the audit items
+        << left << setw(15) << foodName
+        << setw(10) << itemCode
+        << setw(10) << size
+        << right << setw(10) << itemQuantity << endl;
+    return audit;
 }
