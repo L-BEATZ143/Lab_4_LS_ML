@@ -12,17 +12,20 @@ double food1s, double food1m, double food1l,
 double food2s, double food2m, double food2l,
 double food3s, double food3m, double food3l,
 double food4s, double food4m, double food4l); // Neccesary to apply to the Main and setUnitPrice functions
+
 void initializeFood(
     string& food1, string& food2, string& food3, string& food4,
     double& food1s, double& food1m, double& food1l,
     double& food2s, double& food2m, double& food2l,
     double& food3s, double& food3m, double& food3l,
     double& food4s, double& food4m, double& food4l);
+
 ostringstream& foodMenu(ostringstream& menu,
     string food1, double food1s, double food1m, double food1l,
     string food2, double food2s, double food2m, double food2l,
     string food3, double food3s, double food3m, double food3l,
     string food4, double food4s, double food4m, double food4l);
+
 ostringstream& auditReciept(
     ostringstream& audit,
     ostringstream& reciept,
@@ -31,6 +34,11 @@ ostringstream& auditReciept(
     char size,
     int itemQuantity,
     double subtotal);
+
+ostringstream& printedReciept(ostringstream& finalReciept,
+    string customerName, ostringstream reciept, double totalCost, ostringstream audit,
+    double stateTax, double countyTax, double municipalTax);
+
 int main() {
     string foodName; //holds the name of the food set by the item code
     string cashierNotes; 
@@ -62,6 +70,7 @@ int main() {
     string food1, food2, food3, food4;
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
     ostringstream menu;
+    ostringstream finalReciept;
 
     initializeFood(food1, food2, food3, food4,
     food1s, food1m, food1l,
@@ -173,86 +182,16 @@ int main() {
         cout << "please enter customer's name:" << endl;
         cin >> customerName;
         
-        ofstream receipt_fout;
-        receipt_fout.open("Reciept.txt");
-
-        cout << "\n----- RECEIPT -----\n";
-        receipt_fout << "\n----- RECEIPT -----\n";
-
-        cout << "Customer Name: " << customerName << endl;
-        receipt_fout << "Customer Name: " << customerName << endl;
-
-        cout << left << setw(15) << "Item"
-            << setw(10) << "Code"
-            << setw(10) << "Size"
-            << setw(10) << "Qty"
-            << setw(10) << "Subtotal" << endl;
-        receipt_fout << left << setw(15) << "Item"
-            << setw(10) << "Code"
-            << setw(10) << "Size"
-            << setw(10) << "Qty"
-            << setw(10) << "Subtotal" << endl;
-
-        cout << reciept.str(); // this makes the reciept items appear
-        receipt_fout << reciept.str();
-
-        cout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
-        receipt_fout << "Total: $" << fixed << setprecision(2) << totalCost << endl;
-
-        cout << "\n----- INVENTORY AUDIT -----\n";
-        receipt_fout << "\n----- INVENTORY AUDIT -----\n";
-
-        cout << left
-            << setw(15) << "Item"
-            << setw(10) << "Code"
-            << setw(10) << "Size"
-            << right << setw(10) << "Qty" << endl;
-        receipt_fout << left
-            << setw(15) << "Item"
-            << setw(10) << "Code"
-            << setw(10) << "Size"
-            << right << setw(10) << "Qty" << endl;
-
-        cout << audit.str(); // this makes the inventory audit items appear
-        receipt_fout << audit.str();
-
         stateTax = totalCost * 0.065;
         countyTax = totalCost * 0.005;
         municipalTax = totalCost * 0.02125;
         totalCost = (totalCost + stateTax + countyTax + municipalTax + tipCost);
 
-        cout << "\n----- TAXES -----\n";
-        receipt_fout << "\n----- TAXES -----\n";
+        ofstream receipt_fout;
+        receipt_fout.open("Reciept.txt");
 
-        cout << left
-            << setw(25) << "Tax"
-            << setw(15) << "Percentage"
-            << setw(10) << "Cost" << endl
-            << setw(25) << "Arkansas State Tax:"
-            << setw(15) << "6.5%"
-            << setw(10) << fixed << setprecision(2) << stateTax << endl
-            << setw(25) << "Faulkner County Tax:"
-            << setw(15) << "0.5%"
-            << setw(10) << fixed << setprecision(2) << countyTax << endl
-            << setw(25) << "Conway Municipal Tax:"
-            << setw(15) << "0.02125%"
-            << setw(10) << fixed << setprecision(2) << municipalTax << endl;
-        receipt_fout << left
-            << setw(25) << "Tax"
-            << setw(15) << "Percentage"
-            << setw(10) << "Cost" << endl
-            << setw(25) << "Arkansas State Tax:"
-            << setw(15) << "6.5%"
-            << setw(10) << fixed << setprecision(2) << stateTax << endl
-            << setw(25) << "Faulkner County Tax:"
-            << setw(15) << "0.5%"
-            << setw(10) << fixed << setprecision(2) << countyTax << endl
-            << setw(25) << "Conway Municipal Tax:"
-            << setw(15) << "0.02125%"
-            << setw(10) << fixed << setprecision(2) << municipalTax << endl;
-
-        cout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
-        receipt_fout << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
+        cout << finalReciept.str();
+        receipt_fout << finalReciept.str();
 
         cout << left << "Loyalty Points: ";
         receipt_fout << left << "Loyalty Points: ";
@@ -393,4 +332,40 @@ ostringstream& auditReciept(ostringstream& audit, ostringstream& reciept, string
         << setw(10) << size
         << right << setw(10) << itemQuantity << endl;
     return audit;
+}
+// 179 - 261
+ostringstream& printedReciept(ostringstream& finalReciept, string customerName, ostringstream reciept, double totalCost, ostringstream audit, double stateTax, double countyTax, double municipalTax)
+    {
+    finalReciept
+        << "\n----- RECEIPT -----\n" <<
+        "Customer Name: " << customerName << endl
+        << left << setw(15) << "Item"
+        << setw(10) << "Code"
+        << setw(10) << "Size"
+        << setw(10) << "Qty"
+        << setw(10) << "Subtotal" << endl
+        << reciept.str()
+        << "Total: $" << fixed << setprecision(2) << totalCost << endl
+        << "\n----- INVENTORY AUDIT -----\n"
+        << left
+        << setw(15) << "Item"
+        << setw(10) << "Code"
+        << setw(10) << "Size"
+        << right << setw(10) << "Qty" << endl
+        << audit.str()
+        << "\n----- TAXES -----\n"
+        << left
+        << setw(25) << "Tax"
+        << setw(15) << "Percentage"
+        << setw(10) << "Cost" << endl
+        << setw(25) << "Arkansas State Tax:"
+        << setw(15) << "6.5%"
+        << setw(10) << fixed << setprecision(2) << stateTax << endl
+        << setw(25) << "Faulkner County Tax:"
+        << setw(15) << "0.5%"
+        << setw(10) << fixed << setprecision(2) << countyTax << endl
+        << setw(25) << "Conway Municipal Tax:"
+        << setw(15) << "0.02125%"
+        << setw(10) << fixed << setprecision(2) << municipalTax << endl
+        << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
 }
