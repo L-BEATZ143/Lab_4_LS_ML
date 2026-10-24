@@ -421,22 +421,22 @@ ostringstream& foodMenu(ostringstream& menu,
         << setw(15) << "Small (S)"
         << setw(15) << "Medium (M)"
         << setw(15) << "Large (L)" << endl
-        << setw(15) << left << "A. " << food1
-        << setw(15) << food1s
-        << setw(15) << food1m
-        << setw(15) << food1l << endl
-        << setw(15) << left << "B. " << food2
-        << setw(15) << food2s
-        << setw(15) << food2m
-        << setw(15) << food2l << endl
-        << setw(15) << left << "C. " << food3
-        << setw(15) << food3s
-        << setw(15) << food3m
-        << setw(15) << food3l << endl
-        << setw(15) << left << "D. " << food4
-        << setw(15) << food4s
-        << setw(15) << food4m
-        << setw(15) << food4l << endl
+        << setw(2) << left << "A. " << setw(13) << food1
+        << setw(15) << fixed << setprecision(2) << food1s
+        << setw(15) << fixed << setprecision(2) << food1m
+        << setw(15) << fixed << setprecision(2) << food1l << endl
+        << setw(2) << left << "B. " << setw(13) << food2
+        << setw(15) << fixed << setprecision(2) << food2s
+        << setw(15) << fixed << setprecision(2) << food2m
+        << setw(15) << fixed << setprecision(2) << food2l << endl
+        << setw(2) << left << "C. " << setw(13) << food3
+        << setw(15) << fixed << setprecision(2) << food3s
+        << setw(15) << fixed << setprecision(2) << food3m
+        << setw(15) << fixed << setprecision(2) << food3l << endl
+        << setw(2) << left << "D. " << setw(13) << food4
+        << setw(15) << fixed << setprecision(2) << food4s
+        << setw(15) << fixed << setprecision(2) << food4m
+        << setw(15) << fixed << setprecision(2) << food4l << endl
         << "E. Checkout" << endl;
     return menu;
 }
