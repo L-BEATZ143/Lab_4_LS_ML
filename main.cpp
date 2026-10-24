@@ -190,8 +190,8 @@ int main() {
         ofstream receipt_fout;
         receipt_fout.open("Reciept.txt");
 
-        cout << finalReciept.str();
-        receipt_fout << finalReciept.str();
+        cout << finalReciept.str(); //prints final reciept to window
+        receipt_fout << finalReciept.str(); //prints final reciept to reciept.txt
 
         cout << left << "Loyalty Points: ";
         receipt_fout << left << "Loyalty Points: ";
@@ -368,4 +368,5 @@ ostringstream& printedReciept(ostringstream& finalReciept, string customerName, 
         << setw(15) << "0.02125%"
         << setw(10) << fixed << setprecision(2) << municipalTax << endl
         << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
+    return finalReciept;
 }
