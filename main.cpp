@@ -26,17 +26,17 @@ ostringstream& foodMenu(ostringstream& menu,
     string food3, double food3s, double food3m, double food3l,
     string food4, double food4s, double food4m, double food4l);
 
-ostringstream& auditReciept(
+ostringstream& auditReceipt(
     ostringstream& audit,
-    ostringstream& reciept,
+    ostringstream& receipt,
     string foodName,
     char itemCode,
     char size,
     int itemQuantity,
     double subtotal);
 
-ostringstream& printedReciept(ostringstream& finalReciept,
-    string customerName, ostringstream reciept, double totalCost, ostringstream audit,
+ostringstream& printedReceipt(ostringstream& finalReceipt,
+    string customerName, ostringstream receipt, double totalCost, ostringstream audit,
     double stateTax, double countyTax, double municipalTax);
 
 int main() {
@@ -54,7 +54,7 @@ int main() {
     double tipCost;
     string tipPercent;
     string customerName;
-    ostringstream reciept;
+    ostringstream receipt;
     ostringstream audit;
     double totalCost = 0;
     int loyalty;
@@ -70,7 +70,7 @@ int main() {
     string food1, food2, food3, food4;
     double food1s, food1m, food1l, food2s, food2m, food2l, food3s, food3m, food3l, food4s, food4m, food4l;
     ostringstream menu;
-    ostringstream finalReciept;
+    ostringstream finalReceipt;
 
     initializeFood(food1, food2, food3, food4,
     food1s, food1m, food1l,
@@ -125,7 +125,7 @@ int main() {
 
                 double subtotal = itemQuantity * unitPrice;
 
-            auditReciept(audit, reciept, foodName, itemCode,
+            auditReceipt(audit, receipt, foodName, itemCode,
             size, itemQuantity, subtotal);
             totalCost += subtotal;
             if (toupper(itemCode) == 'A') {
@@ -188,10 +188,12 @@ int main() {
         totalCost = (totalCost + stateTax + countyTax + municipalTax + tipCost);
 
         ofstream receipt_fout;
-        receipt_fout.open("Reciept.txt");
+        receipt_fout.open("Receipt.txt");
 
-        cout << finalReciept.str(); //prints final reciept to window
-        receipt_fout << finalReciept.str(); //prints final reciept to reciept.txt
+        printedReceipt(finalReceipt);
+
+        cout << finalReceipt.str(); //prints final receipt to window
+        receipt_fout << finalReceipt.str(); //prints final receipt to receipt.txt
 
         cout << left << "Loyalty Points: ";
         receipt_fout << left << "Loyalty Points: ";
@@ -317,9 +319,9 @@ ostringstream& foodMenu(ostringstream& menu,
         << "E. Checkout" << endl;
     return menu;
 }
-ostringstream& auditReciept(ostringstream& audit, ostringstream& reciept, string foodName, char itemCode, char size, int itemQuantity, double subtotal)
+ostringstream& auditReceipt(ostringstream& audit, ostringstream& receipt, string foodName, char itemCode, char size, int itemQuantity, double subtotal)
     {
-    reciept // this is the accumulator for the reciept items
+    receipt // this is the accumulator for the receipt items
         << left << setw(15) << foodName
         << setw(10) << itemCode
         << setw(10) << size
@@ -334,9 +336,9 @@ ostringstream& auditReciept(ostringstream& audit, ostringstream& reciept, string
     return audit;
 }
 // 179 - 261
-ostringstream& printedReciept(ostringstream& finalReciept, string customerName, ostringstream reciept, double totalCost, ostringstream audit, double stateTax, double countyTax, double municipalTax)
+ostringstream& printedReceipt(ostringstream& finalReceipt, string customerName, ostringstream receipt, double totalCost, ostringstream audit, double stateTax, double countyTax, double municipalTax)
     {
-    finalReciept
+    finalReceipt
         << "\n----- RECEIPT -----\n" <<
         "Customer Name: " << customerName << endl
         << left << setw(15) << "Item"
@@ -344,7 +346,7 @@ ostringstream& printedReciept(ostringstream& finalReciept, string customerName, 
         << setw(10) << "Size"
         << setw(10) << "Qty"
         << setw(10) << "Subtotal" << endl
-        << reciept.str()
+        << receipt.str()
         << "Total: $" << fixed << setprecision(2) << totalCost << endl
         << "\n----- INVENTORY AUDIT -----\n"
         << left
@@ -368,5 +370,5 @@ ostringstream& printedReciept(ostringstream& finalReciept, string customerName, 
         << setw(15) << "0.02125%"
         << setw(10) << fixed << setprecision(2) << municipalTax << endl
         << left << setw(39) << "Subtotal + Tax: " << "$" << totalCost << endl;
-    return finalReciept;
+    return finalReceipt;
 }
