@@ -124,7 +124,18 @@ int main() {
                 << right << setw(10) << itemQuantity << endl;
 
             totalCost += subtotal;
-
+            if (toupper(itemCode) == 'A') {
+                food1Stock -= itemQuantity;
+            }
+            else if (toupper(itemCode) == 'B') {
+                food2Stock -= itemQuantity;
+            }
+            else if (toupper(itemCode) == 'C') {
+                food3Stock -= itemQuantity;
+            }
+            else if (toupper(itemCode) == 'D') {
+                food4Stock -= itemQuantity;
+            }
         } while (toupper(itemCode) != 'E' && (toupper(itemCode) == 'A' || toupper(itemCode) == 'B' || toupper(itemCode) == 'C' || toupper(itemCode) == 'D'));
         cout << setw(10) << left << "Are you a member? (y/n): " << endl;
         cin >> memberCheck;
