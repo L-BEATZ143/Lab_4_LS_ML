@@ -23,7 +23,14 @@ ostringstream& foodMenu(ostringstream& menu,
     string food2, double food2s, double food2m, double food2l,
     string food3, double food3s, double food3m, double food3l,
     string food4, double food4s, double food4m, double food4l);
-ostringstream& auditReciept(ostringstream& audit, ostringstream& reciept);
+ostringstream& auditReciept(
+    ostringstream& audit,
+    ostringstream& reciept,
+    string foodName,
+    char itemCode,
+    char size,
+    int itemQuantity,
+    double subtotal);
 int main() {
     string foodName; //holds the name of the food set by the item code
     string cashierNotes; 
@@ -109,8 +116,8 @@ int main() {
 
                 double subtotal = itemQuantity * unitPrice;
 
-            auditReciept(audit, reciept);
-
+            auditReciept(audit, reciept, foodName, itemCode,
+            size, itemQuantity, subtotal);
             totalCost += subtotal;
             if (toupper(itemCode) == 'A') {
                 food1Stock -= itemQuantity;
