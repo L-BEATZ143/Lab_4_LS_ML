@@ -35,9 +35,15 @@ ostringstream& auditReceipt(
     int itemQuantity,
     double subtotal);
 
-ostringstream& printedReceipt(ostringstream& finalReceipt,
-    string customerName, ostringstream receipt, double totalCost, ostringstream audit,
-    double stateTax, double countyTax, double municipalTax);
+ostringstream& printedReceipt(
+    ostringstream& finalReceipt,
+    string customerName,
+    ostringstream& receipt,
+    double totalCost,
+    ostringstream& audit,
+    double stateTax,
+    double countyTax,
+    double municipalTax);
 
 int main() {
     string foodName; //holds the name of the food set by the item code
@@ -79,6 +85,15 @@ int main() {
     food4s, food4m, food4l);
 
     while (anotherCustomer) {
+        totalCost = 0;
+        receipt.str("");
+        receipt.clear();
+        audit.str("");
+        audit.clear();
+        finalReceipt.str("");
+        finalReceipt.clear();
+        menu.str("");
+        menu.clear();
         loyalty = 0;
         foodMenu(menu,
             food1, food1s, food1m, food1l,
@@ -190,8 +205,8 @@ int main() {
         ofstream receipt_fout;
         receipt_fout.open("Receipt.txt");
 
-        printedReceipt(finalReceipt);
-
+        printedReceipt(finalReceipt, customerName, receipt,
+        totalCost, audit, stateTax, countyTax, municipalTax);
         cout << finalReceipt.str(); //prints final receipt to window
         receipt_fout << finalReceipt.str(); //prints final receipt to receipt.txt
 
@@ -336,7 +351,7 @@ ostringstream& auditReceipt(ostringstream& audit, ostringstream& receipt, string
     return audit;
 }
 // 179 - 261
-ostringstream& printedReceipt(ostringstream& finalReceipt, string customerName, ostringstream receipt, double totalCost, ostringstream audit, double stateTax, double countyTax, double municipalTax)
+ostringstream& printedReceipt(ostringstream& finalReceipt, string customerName, ostringstream& receipt, double totalCost, ostringstream& audit, double stateTax, double countyTax, double municipalTax)
     {
     finalReceipt
         << "\n----- RECEIPT -----\n" <<
